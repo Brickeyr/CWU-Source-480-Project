@@ -21,6 +21,7 @@ package com.sourceApp.source;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
+import org.apache.cordova.engine.SystemWebView;
 
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -31,7 +32,10 @@ public class MainActivity extends CordovaActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        WebView webView = (WebView) appView.getEngine().getView();
+        super.init();
+
+        SystemWebView webView = null;
+        webView = (SystemWebView) appView.getEngine().getView();
         WebSettings settings = webView.getSettings();
         settings.setBuiltInZoomControls(true);
         settings.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
