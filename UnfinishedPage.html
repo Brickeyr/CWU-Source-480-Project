@@ -1,16 +1,44 @@
 <!DOCTYPE html>
-<html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html lang="en">
     <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1">
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>CWU SOURCE</title>
-        <link rel="tab icon" type="image/x-icon" href="Img/CwuSource.ico">
     </head>
     <body>
-        <!-- navigation bar with selectable subjects, bootstraped -->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -21,6 +49,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
+                
                 <div class="collapse navbar-collapse" id="mainNavBar">
                     <ul class="nav navbar-nav">
                         <li><a href="ProgramGlance.html">Program At A Glance</a></li>
@@ -40,20 +69,9 @@
                     </ul>
                 </div>
             </div>
-        </nav> 
-
-        <!-- Main goals of Source -->
-        <h2>&nbsp;<u>The Goals Of Source</u> </h2>
-        <div>
-            <ul>
-                <li><p>Celebrate the depth and diversity of scholarly inquiry and creative expression at Central Washington University.</p></li>
-                <li><p>Share the accomplishments of CWU students in all disciplines and on all campuses with the community.</p></li>
-                <li><p>Recognize outstanding scholarly work and creative activities.</p></li>
-                <li><p>Foster connections between students, faculty, alumni, and employers that help students develop as professionals in their field.</p></li>
-            </ul>
-        </div>
-                
-        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
+        </nav>
+        
+        <img src ="img/WorkInProgress.jpg"/>   
+        
     </body>
 </html>

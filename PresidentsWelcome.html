@@ -3,11 +3,11 @@
     <head>
         <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link rel="stylesheet" type="text/css" href="css/WhenWhere.css">
         <title>CWU SOURCE</title>
         <link rel="tab icon" type="image/x-icon" href="Img/CwuSource.ico">
     </head>
@@ -23,6 +23,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
+                <!--placeholder -->
                 <div class="collapse navbar-collapse" id="mainNavBar">
                     <ul class="nav navbar-nav">
                         <li><a href="ProgramGlance.html">Program At A Glance</a></li>
@@ -43,19 +44,20 @@
                 </div>
             </div>
         </nav> 
-        <h2>&nbsp;<u>Locations</u></h2>
-        <!--List of locations that Source even is held -->
-        <ul>
-            <li><h1>Ellensburg:</h1></li>
-            <p>SOURCE is Wednesday, May 17, 12:00-5:00 pm and Thursday, May 18, 2016, 8:30 am-5:00 pm on the Ellensburg campus in the Student Union and Recreation Center (SURC).</p>
-            <li><h1>The west side:</h1></li>
-            <p>Westside-SOURCE is Tuesday, May 16, 2016, 5:00-8:00 pm, at CWU-Des Moines.</p>
-        </ul>
-        <div>
-            <img src = "img/SchoolMap.jpg"/>
-            <p align = "center"><b>CWU Ellensburg, Campus Map.</b></p>
-        </div>
+
+        <object width="100%" height="100%" display="block" data="img/PresidentWelcomeLetter.pdf"></object>
+
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                var ref = cordova.InAppBroswer.open('http://');
+                window.open('http://PresidentsWelcome.com/PresidentsWelcomeLetter.pdf', '_blank');
+                alert("I am recieving");
+            }
+            alert("DERP");
+
+        </script>
     </body>
 </html>

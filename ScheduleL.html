@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1">
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="footable-bootstrap.latest/js/footable.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <!--
+        <link rel="stylesheet" type="text/css" href="css/ScheduleL.css">
+        -->
+        <link rel="stylesheet" type="text/css" href="footable-bootstrap.latest/css/footable.bootstrap.css">
+        <title>CWU SOURCE</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand"><b>CWU SOURCE</b></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="mainNavBar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="ProgramGlance.html">Program At A Glance</a></li>
+                        <li><a href="UnfinishedPage.html">Schedule</a></li>
+                        <li><a href="ScheduleL.html">Schedule L</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a href="UnfinishedPage.html">President's Welcome</a></li>
+                            <li><a href="Sponsors.html">Sponsors</a></li>
+                            <li><a href="Judges.html">Judges</a></li>
+                            <li><a href="SourceFacts.html">Source Facts</a></li>
+                            <li><a href="WhenandWhere.html">When/Where</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--
+        <div id="outTable"></div>
+        -->
+       
+        <table class="table">
+          <!--
+          <thead>
+            <tr>
+            <th data-breakpoints="all" data-visible="false">ID</th>
+            
+            <th data-breakpoints="all">Type</th>
+            
+            <th>Date</th>
+            <th data-breakpoints="all">Session</th>
+            <th data-breakpoints="all">Presentation number</th>
+            <th data-breakpoints="all">Start time</th>
+            <th data-breakpoints="all">End time</th>
+            <th data-breakpoints="all">Room</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th data-breakpoints="all">Additional Author 1</th>
+            <th data-breakpoints="all">Additional Author Last Name</th>
+            <th data-breakpoints="all">Additional Author 2</th>
+            <th data-breakpoints="all">Additional Author Last Name</th>
+            <th data-breakpoints="all">Additional Author 3</th>
+            <th data-breakpoints="all">Additional Author Last Name</th>
+            <th data-breakpoints="all">Additional Author 4</th>
+            <th data-breakpoints="all">Additional Author Last Name</th>
+            <th data-breakpoints="all">First Name 2</th>
+            <th data-breakpoints="all">Last Name 2</th>
+            <th data-breakpoints="all">Department/Program</th>
+            <th data-breakpoints="all">Mentor 1</th>
+            <th data-breakpoints="all">Mentor 1 Last Name</th>
+            <th data-breakpoints="all">Mentor 1 Department</th>
+            <th data-breakpoints="all">Mentor 2</th>
+            <th data-breakpoints="all">Mentor 2 Last Name</th>
+            <th data-breakpoints="all">Mentor 2 Department</th>
+            <th>Title of Presentation/Performance</th>
+            <th data-breakpoints="all">Campus Presentation</th>
+            <th data-breakpoints="all">Subject Area</th>
+            <th data-breakpoints="all">Abstract</th>
+            <th data-breakpoints="all">Keywords</th>
+            </tr>
+          </thead>
+          -->
+        </table>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript">
+            
+            /*
+                // working call;
+                $.ajax({
+                    url: 'Testor.txt',
+                    dataType: 'text'
+                }).done(successFunction);
+            */
+
+            
+            jQuery(function($) {
+              $('.table').footable({
+                "columns": [
+                  {"name": "id", "title": "ID", "breakpoints": "all"},
+                  {"name": "type", "title": "Type", "breakpoints": "all"},
+                  {"name": "date", "title": "Date"},
+                  {"name": "session", "title": "Session", "breakpoints": "all"},
+                  {"name": "presentation number", "title": "Presentation number", "breakpoints": "all"},
+                  {"name": "start time", "title": "Start time", "breakpoints": "all"},
+                  {"name": "end time", "title": "End time", "breakpoints": "all"},
+                  {"name": "room", "title": "Room", "breakpoints": "all"},
+                  {"name": "first name", "title": "First name"},
+                  {"name": "last name", "title": "Last name"},
+                  {"name": "additional author 1", "title": "Additional Author 1", "breakpoints": "all"},
+                  {"name": "additional author 1 LN", "title": "Additional Author Last Name 1", "breakpoints": "all"},
+                  {"name": "additional author 2", "title": "Additional Author 2", "breakpoints": "all"},
+                  {"name": "additional author 2 LN", "title": "Additional Author Last Name 2", "breakpoints": "all"},
+                  {"name": "additional author 3", "title": "Additional Author 3", "breakpoints": "all"},
+                  {"name": "additional author 3 LN", "title": "Additional Author Last Name 3", "breakpoints": "all"},
+                  {"name": "additional author 4", "title": "Additional Author 4", "breakpoints": "all"},
+                  {"name": "additional author 4 LN", "title": "Additional Author Last Name 4", "breakpoints": "all"},
+                  {"name": "first name 2", "title": "First name 2", "breakpoints": "all"},
+                  {"name": "last name 2", "title": "Last name 2", "breakpoints": "all"},
+                  {"name": "department/program", "title": "Department/Program", "breakpoints": "all"},
+                  {"name": "mentor 1", "title": "Mentor 1", "breakpoints": "all"},
+                  {"name": "mentor 1 LN", "title": "Mentor 1 Last Name", "breakpoints": "all"},
+                  {"name": "mentor department", "title": "Mentor 1 department", "breakpoints": "all"},
+                  {"name": "mentor 2", "title": "Mentor 2", "breakpoints": "all"},
+                  {"name": "mentor 2 LN", "title": "Mentor 2 Last Name", "breakpoints": "all"},
+                  {"name": "mentor department 2", "title": "Mentor 2 department", "breakpoints": "all"},
+                  {"name": "title of presentation/erformance", "title": "Title of presentation/preformance"},
+                  {"name": "campus presentation", "title": "Campus Presentation", "breakpoints": "all"},
+                  {"name": "subject area", "title": "Subject area", "breakpoints": "all"},
+                  {"name": "abstract", "title": "Abstract", "breakpoints": "all"},
+                  {"name": "keywords", "title": "Keywords", "breakpoints": "all"}
+                ]
+              });
+            });
+            
+            /*
+            $.ajax({
+                url: 'spreadsheet_forCS_project.txt',
+                dataType: 'text'
+            }).done(createTable);
+            */
+
+            
+            //alert('callings');
+            $.ajax({
+              url: 'SourceXML.xml',
+              dataType: 'xml',
+              success:  function readXML(data) {
+              
+              var tBody = '<tbody>';
+              var idNum = 0;
+              
+              $(data).find('sections section').each(function() {
+                var array = [];
+                idNum++;
+                array.push(idNum);
+                array.push($(this).find('Type').text());
+                array.push($(this).find('Date').text());
+                array.push($(this).find('Session').text());
+                array.push($(this).find('Presentation_Number').text());
+                array.push($(this).find('Start_Time').text());
+                array.push($(this).find('End_Time').text());
+                array.push($(this).find('Room').text());
+                array.push($(this).find('First_Name').text());
+                array.push($(this).find('Last_Name').text());
+                array.push($(this).find('Additional_Author_1').text());
+                array.push($(this).find('Additional_Author_1_LN').text());
+                array.push($(this).find('Additonal_Author_2').text());
+                array.push($(this).find('Additonal_Author_2_LN').text());
+                array.push($(this).find('Additional_Author_3').text());
+                array.push($(this).find('Additional_Author_3_LN').text());
+                array.push($(this).find('Additional_Author_4').text());
+                array.push($(this).find('Additional_Author_4_LN').text());
+                array.push($(this).find('First_Name_2').text());
+                array.push($(this).find('Last_Name_2').text());
+                array.push($(this).find('Department_Program').text());
+                array.push($(this).find('Additional_Faculty_1').text());
+                array.push($(this).find('Additional_Faculty_1_LN').text());
+                array.push($(this).find('Additional_Faculty_1_Department').text());
+                array.push($(this).find('Additional_Faculty_2').text());
+                array.push($(this).find('Additional_Faculty_2_LN').text());
+                array.push($(this).find('Additional_Faculty_2_Department').text());
+                array.push($(this).find('Title_Presentation').text());
+                array.push($(this).find('Campus').text());
+                array.push($(this).find('Subject_Area').text());
+                array.push($(this).find('Abstract').text());
+                array.push($(this).find('Keywords').text());
+
+                tBody += '<tr>';
+                for (var i = 0; i < array.length; i++) {
+                  tBody += '<td>';
+                  
+                  tBody += array[i];
+                  tBody += '</td>';
+                }
+                tBody += '</tr>';
+
+              });
+              tBody += '</tbody>';
+              $('.table').append(tBody);
+            },
+            error: function() {
+              alert('File not found try again');
+            }
+          });
+          
+            /*
+            // Column 30 is abstracts
+            // ***Commas before or after a quotation not parsing properly***
+            function createTable(data) {
+              var allRows = data.split(/\r?\n|\r/);
+              var tBody = '<tBody>';
+              var idNum = 0;
+              for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+                var tRow = "";
+                if (singleRow % 2 === 0) {
+                  tRow = '<tr style=\"background-color: grey;\">';
+                } else {
+                  tRow = '<tr>';
+                }
+                tBody += tRow;
+                //var rowCells = allRows[singleRow].split(',');
+                //var rowCells = allRows[singleRow].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+                //var rowCells = allRows[singleRow].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); //**better positive lookahead
+                var rowCells = allRows[singleRow].split('\t'); // Tab split
+                //var rowCells = allRows[singleRow].split(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/); //better negative lookahead
+                //rowCells = rowCells || [];
+                tBody += '<td>';
+                //alert("id: " + idNum);
+                tBody += idNum;
+                tBody += '</td>';
+                idNum++;
+                for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+                    tBody += '<td>';
+                    //alert("" + rowCells[rowCell]);
+                    tBody += rowCells[rowCell];
+                    tBody += '</td>';
+                }
+                tBody += '</tr>';
+              }
+              tBody += '</tbody>';
+              $('.table').append(tBody);
+            }
+            
+            /*
+            jQuery(function($) {
+              $('.table').footable();
+            });
+            
+            
+            function successFunction(data) {
+              var allRows = data.split(/\r?\n|\r/);
+              var table = '<table>';
+              for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+                if (singleRow === 0) {
+                  table += '<thead>';
+                  table += '<tr>';
+                } else {
+                  table += '<tr>';
+                }
+                var rowCells = allRows[singleRow].split(',');
+                for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+                  if (singleRow === 0) {
+                    table += '<th>';
+                    table += rowCells[rowCell];
+                    table += '</th>';
+                  } else {
+                    table += '<td>';
+                    table += rowCells[rowCell];
+                    table += '</td>';
+                  }
+                }
+                if (singleRow === 0) {
+                  table += '</tr>';
+                  table += '</thead>';
+                  table += '<tbody>';
+                } else {
+                  table += '</tr>';
+                }
+              } 
+              table += '</tbody>';
+              table += '</table>';
+              $('#outTable').append(table);
+            }
+            */
+        </script>
+    </body>
+</html>
