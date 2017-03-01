@@ -22,7 +22,7 @@
         Tells us to code in English. Not French, German, Japanese, Russian, Spanish, Hungarian, 
         Chinese, Hieroglyphic, Ancient Egyptian, Mayan, or Hawaiian. 
 -->
-<html>
+<html lang="en">
     
     <!--Open html head-->
     <head>
@@ -36,8 +36,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         
@@ -70,6 +69,30 @@
         -->
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1">
         
+        <!--Call jquery-3,1,1,js script
+            Function: <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+            
+                Param: type="text/javascript"
+                    Defines the script type as javascript
+            
+                Param:src="js/jquery-3.1.1.js"
+                    Defines the script source to be js/jquery-3.1.1.js
+                    js/jquery-3.1.1.js: The javascript jquery-3.1.1.js is located in the js file
+        -->
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        
+        <!--Call bootstrap.js script
+            Function: <script type="text/javascript" src="js/bootstrap.js"></script>
+            
+                Param: type="text/javascript"
+                    Defines the script type as javascript
+            
+                Param:src="js/bootstrap.js"
+                    Defines the script source to be js/bootstrap.js
+                    js/bootstrap.js: The javascript bootstrap.js is located in the js file
+        -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        
         <!--Links the css stylesheet bootstap.min.css to the html page
             Function: <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         
@@ -100,6 +123,8 @@
         -->
         <link rel="stylesheet" type="text/css" href="css/index.css">
         
+        <link rel="stylesheet" type="text/css" href="css/ScheduleL.css">
+        
         <!--Creates the title for the webpage (the name of the website as viewed on a browser tab)
             Function: <title>CWU SOURCE</title>
             
@@ -122,6 +147,7 @@
                     img/CwuSource.ico: CwuSource.ico is located in the img folder
         -->
         <link rel="tab icon" type="image/x-icon" href="img/CwuSource.ico">
+        
         
     </head>
     <!--Close html head-->
@@ -241,18 +267,190 @@
             
         </nav>
         <!--Closes the navbar-->
-
-        <!-- Annual Program at a glance image 
-            Function: <img src="img/ScheduleAtAGlance.JPG"/>
-            
-                Param: src = "img/ScheduleAtAGlance.JPG"
-                    Sets the image to be displayed at ScheduleAtAGlance.JPG
-                    img/ScheduleAtAGlance.JPG: The ScheduleAtAGlance.JPG file is located in the img folder
         
-        -->
-        <img src="img/ScheduleAtAGlance.JPG"/>
+        <div id="outTable"></div>
+		<textarea id="in" cols = "30" rows="1" maxlength="128"></textarea>
+		<button onclick="testquery()">Query</button>
+        <script type="text/javascript">
+		
 
-        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        </script>
+
+
+<table id="mytable" class="table table-condensed table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Start Time</th>
+			<th>Location</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+</table>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalTitle"></h4>
+      </div>
+      <div class="modal-body">
+      <!--
+        <p><input type="text" class="input-sm" id="txtfname"/></p>
+        <p><input type="text" class="input-sm" id="txtlname"/></p>
+        <p><input type="text" class="input-sm" id="txtAname"/></p>
+        -->
+        <p id="date"></p>
+        <p id="startTime"></p>
+        <p id="location"></p>
+        <p id="authors"></p>
+        <p id="mentors"></p>
+        <hr>
+        <!--<p id="txtAname"></p> -->
+        <p id="abstract"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+
+</script>
+
+<script>
+
+document.addEventListener('deviceready', onDeviceReady, false);
+
+		var input = document.getElementById('in');
+		var table = document.getElementById("mytable");
+		var db;
+
+		$('table').on('click', 'tr', function(e){
+   			 $("#myModal").modal("show");
+   			 //$("#txtfname").val($(this).closest('tr').children()[0].textContent);
+   			 //$("#txtlname").val($(this).closest('tr').children()[1].textContent);
+         $("#startTime").text("Start time: " + $(this).closest('tr').children()[0].textContent);
+         $("#location").text("Location: " + $(this).closest('tr').children()[1].textContent);
+         var title = "'" + $(this).closest('tr').children()[2].textContent + "'";
+         $("#myModal").find('.modal-title').text($(this).closest('tr').children()[2].textContent);
+         db.readTransaction(function (txn) {
+            txn.executeSql('SELECT Abstract, Date, AuthorF1, AuthorL1, AuthorF2, AuthorL2, AuthorF3, AuthorL3, AuthorF4, AuthorL4, AuthorF5, AuthorL5 FROM data WHERE PanelTitle = ' + title, [], function (tx, res) {
+                $("#abstract").text("Abstract: " + res.rows.item(0)["Abstract"]);
+                $("#date").text("Date: " + res.rows.item(0)["Date"]);
+                var authors = [];
+                authors.push(res.rows.item(0)["AuthorF1"]); // 0
+                authors.push(res.rows.item(0)["AuthorL1"]);
+                authors.push(res.rows.item(0)["AuthorF2"]); // 2
+                authors.push(res.rows.item(0)["AuthorL2"]);
+                //alert("Author F2: " + authors[2]);
+                //alert("Author L2: " + authors[3]);
+                authors.push(res.rows.item(0)["AuthorF3"]); // 4
+                authors.push(res.rows.item(0)["AuthorL3"]);
+                authors.push(res.rows.item(0)["AuthorF4"]); // 6
+                authors.push(res.rows.item(0)["AuthorL4"]);
+                authors.push(res.rows.item(0)["AuthorF5"]); // 8
+                authors.push(res.rows.item(0)["AuthorL5"]);
+                $("#authors").text("Author(s): " );
+                var authorz = document.getElementById('authors');
+                if (authors[0] != "UNDEFINED") {
+                  authorz.innerHTML = authorz.innerHTML + authors[0] + " " + authors[1];
+                }
+                for (var i = 2; i < authors.length - 1; i += 2) {
+                  if (authors[i] !== UNDEFINED || authors[i] !== "" || authors[i] !== ''|| authors[i].length > 0 || authors[i] !== null || authors[i] !== "NULL") {
+                    authorz.innerHTML = authorz.innerHTML + ", " + authors[i] + " " + authors[i+1];
+                  }
+                }
+            });
+            
+
+         });
+		});
+
+		function testquery(){
+     			db.readTransaction(function (txn) {
+        			txn.executeSql('SELECT StartTime, Location, PanelTitle FROM data', [], function (tx, res) {
+          				//output.value = "";
+					var arr;
+					deleteRows();
+					for(var i = 0; i < res.rows.length; i++){
+						arr = [res.rows.item(i)["StartTime"], res.rows.item(i)["Location"], res.rows.item(i)["PanelTitle"]];
+						//output.value += res.rows.item(i)["AuthorF1"] + "\n";
+						addRow(arr);
+					}
+        			});
+      			});
+		}
+
+			function deleteRows(){
+				while(table.rows.length > 1){
+					table.deleteRow(1);
+				}
+			}
+
+			function addRow(arr){
+				var row = table.insertRow(-1);
+				var cell;
+				for(var i = 0; i < arr.length; i++){
+					cell = row.insertCell(-1);
+					cell.innerHTML = arr[i];
+				}
+			}
+
+		function onDeviceReady(){
+    			function copyDatabaseFile(dbName) {
+
+      				var sourceFileName = cordova.file.applicationDirectory + 'www/' + dbName;
+      				var targetDirName = cordova.file.dataDirectory;
+
+      				return Promise.all([
+					new Promise(function (resolve, reject) {
+		  				resolveLocalFileSystemURL(sourceFileName, resolve, reject);
+					}),
+					new Promise(function (resolve, reject) {
+          					resolveLocalFileSystemURL(targetDirName, resolve, reject);
+        				})
+      				]).then(function (files) {
+					var sourceFile = files[0];
+					var targetDir = files[1];
+        				return new Promise(function (resolve, reject) {
+          					targetDir.getFile(dbName, {}, resolve, reject);
+        				}).then(function () {
+          					console.log("file already copied");
+        				}).catch(function () {
+          					console.log("file doesn't exist, copying it");
+          					return new Promise(function (resolve, reject) {
+            					sourceFile.copyTo(targetDir, dbName, resolve, reject);
+          				}).then(function () {
+            					console.log("database file copied");
+          				});
+        				});
+      					});
+    			}
+
+    			copyDatabaseFile('mydatabase.db').then(function () {
+      			// success! :)
+      			db = sqlitePlugin.openDatabase('mydatabase.db');
+      			db.readTransaction(function (txn) {
+        			txn.executeSql('SELECT AuthorF1 FROM data WHERE CAST(EntryID as integer) BETWEEN 1 AND 6', [], function (tx, res) {
+          				console.log('Successfully read from pre-populated DB:');
+					for(var i = 1; i < res.rows.length; i++){
+          					//output.value += (JSON.stringify(res.rows.item(i))) + "\n";
+					}
+        			});
+      			});
+    			}).catch(function (err) {
+      				// error! :(
+      				console.log(err);
+    			});
+	
+
+		}
+	
+</script>
+        <script type="text/javascript" src="cordova.js"></script>
     </body>
 </html>

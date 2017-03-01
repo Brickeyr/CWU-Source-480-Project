@@ -1,47 +1,245 @@
 <!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<!--Open html
+    Param: lang = "en"
+        Tells us to code in English. Not French, German, Japanese, Russian, Spanish, Hungarian, 
+        Chinese, Hieroglyphic, Ancient Egyptian, Mayan, or Hawaiian. 
+-->
 <html>
+    
+    <!--Open html head-->
     <head>
+        
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
+        
+        <!--Allow user to zoom on touch-screen devices
+            Function: <meta name= "viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1">
+        
+                Param: name = "viewport"
+        
+        
+                Param: content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1"
+        
+                    Arg: width=device-width
+                        Sets the maximum width to the width of the devices default parameters
+                
+                    Arg: height=device-height
+                        Sets the maximum height to the height of the devices default parameters
+        
+                    Arg: initial-scale=1
+                        Sets the starting scale (when the user first enters the page) of the screen (how the user will view the screen) 
+                        to 100% (not zoomed in, not zoomed out)
+        
+                    Arg: minimum-scale=1
+                        Sets how far the user can zoom out to a minimum of 100%
+        
+                    Arg: maximum-scale=3
+                        Sets how far the user can zoom in to a maximum of 300%
+                        
+                    Arg: user-scalable=1
+                        Allows the user to zoom in and zoom out on the page
+        -->
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=1">
+        
+        <!--Links the css stylesheet bootstap.min.css to the html page
+            Function: <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        
+                Param: rel="stylesheet"
+                    Defines the relationship as a stylesheet
+        
+                Param: type="text/css"
+                    Defines the type as a css stylesheet
+                    
+                Param: href="css/bootstrap.min.css"
+                    Sets the reference point as bootstrap.min.css
+                    css/bootstrap.min.css: bootstrap.min.css is located in the css folder
+        -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        
+        <!--Links the css stylesheet index.css to the html page
+            Function: <link rel="stylesheet" type="text/css" href="css/index.css">
+        
+                Param: rel="stylesheet"
+                    Defines the relationship as a stylesheet
+        
+                Param: type="text/css"
+                    Defines the type as a css stylesheet
+                    
+                Param: href="css/index.css"
+                    Sets the reference point as bootstrap.min.css
+                    css/index.css: index.css is located in the css folder
+        -->
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        
+        <!--Creates the title for the webpage (the name of the website as viewed on a browser tab)
+            Function: <title>CWU SOURCE</title>
+            
+                Arg: CWU SOURCE
+                    The title name that will be displayed
+        -->
         <title>CWU SOURCE</title>
-        <link rel="tab icon" type="image/x-icon" href="Img/CwuSource.ico">
+        
+        <!--Links the image CwuSource.ico to the html browser tab
+            Function: <link rel="tab icon" type="image/x-icon" href="img/CwuSource.ico">
+        
+                Param: rel="tab icon"
+                    Defines the relationship to the html page as the icon in the browser tab
+        
+                Param: type="image/x-icon"
+                    Defines the type as an icon image
+                    
+                Param: href="img/CwuSource.ico"
+                    Sets the reference point as img/CwuSource.ico
+                    img/CwuSource.ico: CwuSource.ico is located in the img folder
+        -->
+        <link rel="tab icon" type="image/x-icon" href="img/CwuSource.ico">
+        
     </head>
+    <!--Close html head-->
+    
+    <!--Open html body-->
     <body>
-        <!-- navigation bar with selectable subjects, bootstraped -->
+        
+        <!--Navigation bar with selectable subjects, bootstrapped
+            Function: <nav class="navbar navbar-inverse">...</nav>
+                
+                Param: class = "navbar navbar-inverse"
+                    Uses the css class navbar-inverse located in the index.css file
+        -->
         <nav class="navbar navbar-inverse">
+            
+            <!--Opens div in navbar for a fluid container-->
             <div class="container-fluid">
+                
+                <!--Opens a div for the navbar header (leftmost navbar object)-->
                 <div class="navbar-header">
+                    
+                    <!--Links the text CWU SOURCE to an html reference of index.html(website homepage)
+                        Function: <a href="index.html" class="navbar-brand"><b>CWU SOURCE</b></a>
+                    
+                            Param: href = "index.html"
+                                Sets the reference point as index.html
+                    
+                            Param: class = "navbar-brand"
+                                Uses the css class navbar-brand located in the index.css file
+                    
+                            Param: <b>...</b>
+                                Sets the included text to bold
+                    
+                            Arg: CWU SOURCE
+                                The text to be displayed
+                    -->
                     <a href="index.html" class="navbar-brand"><b>CWU SOURCE</b></a>
+                    
+                    <!--Creates a button that contains the dropdown menu when the page decreases in size
+                        Function: <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">...</button>
+                    
+                            Param: type = "button"
+                                Defines the type as a button (clickable)
+                    
+                            Param: class = "navbar-toggle"
+                                Uses the class navbar-toggle located in the bootstrap.min.css file
+                    
+                            Param: data-toggle = "collapse"
+                                Allows the user to collapse the data (make it appear and disappear on the screen)
+                    
+                            Param: data-target = "#mainNavBar"
+                                Gives the target location of this button                    
+                    -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                 </div>
+                <!--Closes navbar header div-->
+                
+                <!--Creates a div for the collapsable navbar-->
                 <div class="collapse navbar-collapse" id="mainNavBar">
+                    
+                    <!--Creates an unordered list that uses navbar-nav from the bootstrap.min.css file-->
                     <ul class="nav navbar-nav">
+                        
+                        <!--The following list elements are defined as such:
+                            Function: <li><a href="EXAMPLE.html">EXAMPLE NAME</a></li>
+                        
+                                Param:<a href="EXAMPLE.html">...</a>
+                                    Links the text to the html reference EXAMPLE.html
+                                    (this will change depending on the name provided)
+                        
+                                Param:EXAMPLE NAME
+                                    The clickable text that will appear in the navbar list
+                                    (this will change depending on the name provided)
+                        -->
                         <li><a href="ProgramGlance.html">Program At A Glance</a></li>
-                        <li><a href="UnfinishedPage.html">Schedule</a></li>
-                        <li><a href="ScheduleL.html">Schedule L</a></li>
+                        
+                        <!--See Above For More Info-->
+                        <li><a href="Schedule.html">Schedule</a></li>
+                        
+                        <!--<li><a href="ScheduleL.html">Schedule L</a></li>-->
+                        
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span>
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a href="UnfinishedPage.html">President's Welcome</a></li>
-                            <li><a href="Sponsors.html">Sponsors</a></li>
-                            <li><a href="Judges.html">Judges</a></li>
-                            <li><a href="SourceFacts.html">Source Facts</a></li>
-                            <li><a href="WhenandWhere.html">When/Where</a></li>
-                          </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span>
+                            </a>
+                            
+                            <!--Creates a nested unordered list to be used with the dropdown-menu class-->
+                            <ul class="dropdown-menu">
+                            
+                                <!--See Above For More Info-->  
+                                <li><a href="UnfinishedPage.html">President's Welcome</a></li>
+                            
+                                <!--See Above For More Info-->
+                                <li><a href="Sponsors.html">Sponsors</a></li>
+                            
+                                <!--See Above For More Info-->
+                                <li><a href="Judges.html">Judges</a></li>
+                            
+                                <!--See Above For More Info-->
+                                <li><a href="SourceFacts.html">Source Facts</a></li>
+                            
+                                <!--See Above For More Info-->
+                                <li><a href="WhenandWhere.html">When/Where</a></li>
+                            </ul>
+                            <!--Closes the nested list-->
                         </li>
+                        <!--Closes the list element containing the nested list-->
                     </ul>
+                    <!--Closes the unordered list-->
                 </div>
+                <!--Closes the div for the collapsable navbar-->
             </div>
-        </nav> 
-
+            <!--Closes the div for the fluid container-->
+            
+        </nav>
+        <!--Closes the navbar-->
+        
         <!-- Main goals of Source -->
         <h2>&nbsp;<u>The Goals Of Source</u> </h2>
         <div>
